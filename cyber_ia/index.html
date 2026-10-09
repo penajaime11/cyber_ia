@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CYBER-IA | Proyecto Integrador Unidad 2</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="portada">
+  <div class="wrap">
+    <p class="inst">Instituto Tecnológico Superior de Nuevo Casas Grandes · Inteligencia Artificial</p>
+    <h1>CYBER-IA</h1>
+    <p class="sub">Sistema inteligente para detección de incidentes de ciberseguridad, basado en representación del conocimiento y razonamiento.</p>
+    <p class="meta">Proyecto Integrador de la Unidad 2 · Docente: <strong>Ing. Luis Alberto Grijalva Romero</strong></p>
+    <ul class="equipo">
+      <li><span>José Jaime Peña Gonzalez</span><b>23CG0376</b></li>
+      <li><span>Pablo Isael Gutierrez Salas</span><b>23CG0175</b></li>
+      <li><span>Emily Meza Ibarra</span><b>23CG0248</b></li>
+    </ul>
+  </div>
+</header>
+
+<nav id="nav" aria-label="Entregables"></nav>
+
+<main class="wrap">
+
+<section class="card" id="e0">
+  <h2>Objetivo y contexto</h2>
+  <p>Una empresa tecnológica necesita ayudar a su personal de seguridad informática a identificar amenazas dentro de la red corporativa. CYBER-IA analiza evidencias observadas en computadoras, servidores y redes para <strong>identificar amenazas, diagnosticar posibles incidentes y recomendar acciones de mitigación</strong>.</p>
+  <p>El sistema se construye en nueve entregables: del mapa conceptual y la red semántica, pasando por reglas, árboles y excepciones, hasta el razonamiento probabilístico y el teorema de Bayes.</p>
+</section>
+
+<section class="card" id="e1">
+  <h2><i>1</i>Mapa conceptual del dominio</h2>
+  <p class="nota">Conceptos en recuadros y palabras de enlace sobre las líneas, de modo que cada par forme una proposición: <q>Concepto A — enlace — Concepto B</q>.</p>
+  <div class="panel"><svg id="svg-mapa" viewBox="0 0 1000 600" role="img" aria-label="Mapa conceptual de ciberseguridad"></svg></div>
+</section>
+
+<section class="card" id="e2">
+  <h2><i>2</i>Red semántica</h2>
+  <p class="nota"><b id="cnt-nodos"></b> conceptos y <b id="cnt-rel"></b> relaciones dirigidas (mínimo exigido: 20 y 30). Desplaza horizontalmente en pantallas pequeñas.</p>
+  <div class="panel scroll"><svg id="svg-grafo" viewBox="0 0 1000 640" style="min-width:900px" role="img" aria-label="Red semántica"></svg></div>
+  <div class="leyenda" id="ley-grafo"></div>
+  <h3>Tabla de tripletas (sujeto, predicado, objeto)</h3>
+  <div class="tabla-wrap"><table id="tabla-rel"><thead><tr><th>#</th><th>Origen</th><th>Relación</th><th>Destino</th><th>Significado</th></tr></thead><tbody></tbody></table></div>
+</section>
+
+<section class="card" id="e3">
+  <h2><i>3</i>Subsistema basado en la red semántica</h2>
+  <p class="nota">Consultar es recorrer aristas dirigidas. Si <code>A —indica→ B</code> y <code>C —mitiga→ B</code>, el motor deduce que para A conviene aplicar C.</p>
+  <div class="consola">
+    <label for="q-sel">Selecciona una consulta</label>
+    <div class="fila"><select id="q-sel"></select><button id="q-run" type="button">Ejecutar recorrido</button></div>
+    <pre id="q-out" aria-live="polite">Elige una consulta y ejecuta el recorrido.</pre>
+  </div>
+  <h3>Evidencia de consultas realizadas</h3>
+  <div id="q-all" class="grid2"></div>
+</section>
+
+<section class="card" id="e4">
+  <h2><i>4</i>Sistema de reglas IF-THEN (razonamiento monótono)</h2>
+  <p class="nota">Un sistema es monótono si añadir hechos nunca elimina conclusiones: Γ ⊢ α implica Γ ∪ {β} ⊢ α. Base de <b id="cnt-reglas"></b> reglas (mínimo 10).</p>
+  <div id="reglas" class="grid2"></div>
+  <h3>5 ejemplos de diagnóstico</h3>
+  <div class="tabla-wrap"><table id="tabla-casos"><thead><tr><th>Caso</th><th>Hechos iniciales</th><th>Reglas activadas</th><th>Hechos deducidos</th><th>Acción recomendada</th></tr></thead><tbody></tbody></table></div>
+  <h3>Simulador de reglas</h3>
+  <div class="consola">
+    <p class="peq">Marca los hechos observados y ejecuta el encadenamiento hacia adelante.</p>
+    <div id="sim-hechos" class="checks"></div>
+    <button id="sim-run" type="button">Ejecutar motor de inferencia</button>
+    <pre id="sim-out" aria-live="polite">Sin ejecutar.</pre>
+  </div>
+</section>
+
+<section class="card" id="e5">
+  <h2><i>5</i>Juego de inferencias (cadenas lógicas)</h2>
+  <p class="nota">Encadenamiento hacia adelante: los hechos disparan reglas, las conclusiones intermedias disparan nuevas reglas hasta llegar a una acción. Las cadenas se generan ejecutando el motor real.</p>
+  <div id="cadenas"></div>
+</section>
+
+<section class="card" id="e6">
+  <h2><i>6</i>Árbol de decisión</h2>
+  <p class="nota"><b>16 nodos de decisión</b> [N1–N16] (mínimo 15). Las hojas son diagnósticos y no cuentan como nodos. Rama verde = Sí, roja = No.</p>
+  <div class="panel scroll"><svg id="svg-arbol" role="img" aria-label="Árbol de decisión"></svg></div>
+  <h3>Inventario de nodos</h3>
+  <div id="inv-nodos" class="inv"></div>
+</section>
+
+<section class="card" id="e7">
+  <h2><i>7</i>Conocimiento no-monótono</h2>
+  <p class="nota">Con información incompleta el sistema asume reglas por defecto. Si llega un hecho nuevo que las contradice, retracta la conclusión previa.</p>
+  <div id="excepciones" class="grid2"></div>
+</section>
+
+<section class="card" id="e8">
+  <h2><i>8</i>Razonamiento probabilístico</h2>
+  <p class="nota">Evidencias independientes que apoyan la misma hipótesis se combinan con la fórmula de Shortliffe: <code>CF = CF₁ + CF₂ · (1 − CF₁)</code>.</p>
+  <div class="tabla-wrap"><table id="tabla-prob"><thead><tr><th>Evidencia</th><th>Probabilidad asociada</th></tr></thead><tbody></tbody></table></div>
+  <h3>Cinco casos</h3>
+  <div id="prob-casos" class="grid2"></div>
+</section>
+
+<section class="card" id="e9">
+  <h2><i>9</i>Teorema de Bayes</h2>
+  <p class="nota"><code>P(H|E) = P(E|H) · P(H) / P(E)</code>, donde P(H) es la probabilidad a priori, P(E|H) la verosimilitud, P(E) la probabilidad marginal y P(H|E) la probabilidad a posteriori.</p>
+  <div id="bayes-casos" class="grid2"></div>
+  <h3>Calculadora</h3>
+  <div class="consola">
+    <div class="fila calc">
+      <label>P(H)<input id="b-h" type="number" step="0.01" min="0" max="1" value="0.20"></label>
+      <label>P(E|H)<input id="b-eh" type="number" step="0.01" min="0" max="1" value="0.90"></label>
+      <label>P(E)<input id="b-e" type="number" step="0.01" min="0.01" max="1" value="0.35"></label>
+    </div>
+    <pre id="b-out" aria-live="polite"></pre>
+  </div>
+</section>
+
+<section class="card" id="conclusion">
+  <h2>Conclusiones</h2>
+  <p>CYBER-IA combina conocimiento declarativo (red semántica), reglas de producción y un árbol de decisión para diagnosticar. Las excepciones no-monótonas evitan falsos positivos, y los factores de certeza y Bayes cuantifican qué tan probable es cada amenaza antes de actuar. Un diagnóstico apoyado en varias evidencias es más confiable que uno basado en un solo indicio.</p>
+</section>
+</main>
+
+<footer>
+  <p>Instituto Tecnológico Superior de Nuevo Casas Grandes · Inteligencia Artificial · Ing. Luis Alberto Grijalva Romero</p>
+  <p>José Jaime Peña Gonzalez (23CG0376) · Pablo Isael Gutierrez Salas (23CG0175) · Emily Meza Ibarra (23CG0248)</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
