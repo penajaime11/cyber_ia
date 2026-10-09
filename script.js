@@ -413,3 +413,6 @@ const TREE = {
   ['#b-h', '#b-eh', '#b-e'].forEach(s => $(s).addEventListener('input', calc));
   calc();
 })();
+
+/* ===== Botón PDF ===== */
+$('#btn-pdf').addEventListener('click', () => window.print());
